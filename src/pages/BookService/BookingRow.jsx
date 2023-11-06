@@ -1,6 +1,7 @@
 import img from "../../assets/images/download.png"
-const BookingRow = ({ booking, handleDelete }) => {
-    const { _id, email, name, service } = booking;
+const BookingRow = ({ booking, handleDelete, handleUpdate }) => {
+    const { _id, email, name, service, status } = booking;
+
 
 
     return (
@@ -31,7 +32,9 @@ const BookingRow = ({ booking, handleDelete }) => {
             </td>
             <td>Purple</td>
             <th>
-                <button className="btn text-white bg-red-500 btn-xs">Pending</button>
+                {
+                    status === 'confirm' ? <button className="btn text-white bg-green-500 btn-xs">Confirm</button> : <button onClick={() => handleUpdate(_id)} className="btn text-white bg-red-500 btn-xs">Pending</button>
+                }
             </th>
         </tr>
     );
